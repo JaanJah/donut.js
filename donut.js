@@ -1,10 +1,5 @@
 let a = 0;
 let b = 0;
-
-// Terminal size
-const height = 24;
-const width = 80;
-
 // Clear terminal
 process.stdout.write('\033[2J');
 
@@ -17,7 +12,6 @@ setInterval((() => {
         screen[k] = k % 80 == 79 ? "\n" : " ";
     }
 
-    let j = 0;
     for (let j = 0; j < 6.28; j += 0.07) {
         const sinJ = Math.sin(j);
         const cosJ = Math.cos(j);
@@ -38,7 +32,7 @@ setInterval((() => {
             const x = 0 | (40 + 30 * mess * (cosI * cosJ2 * cosB - t * sinB));
             // 12 is the down screen shift
             const y = 0 | (12 + 15 * mess * (cosI * cosJ2 * sinB + t * cosB));
-            const o = x + width * y;
+            const o = x + 80 * y;
             
             const N = 0 | (8 * ((sinJ * sinA - sinI * cosJ * cosA) * cosB - sinI * cosJ * sinA - sinJ * cosA - cosI * cosJ * sinB));
 
