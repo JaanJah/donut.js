@@ -4,8 +4,16 @@ let b = 0;
 process.stdout.write('\033[2J');
 
 setInterval((() => {
+    a += 0.07;
+    b += 0.03;
+
     let zeroes = [];
     let screen = [];
+
+    const sinA = Math.sin(a);
+    const cosA = Math.cos(a);
+    const cosB = Math.cos(b);
+    const sinB = Math.sin(b);
 
     for (let k = 0; k < 1760; k++) {
         zeroes[k] = 0;
@@ -16,11 +24,6 @@ setInterval((() => {
         const sinJ = Math.sin(j);
         const cosJ = Math.cos(j);
         for (let i = 0; i < 6.28; i += 0.02) {
-            const sinA = Math.sin(a);
-            const cosA = Math.cos(a);
-            const cosB = Math.cos(b);
-            const sinB = Math.sin(b);
-
             const sinI = Math.sin(i);
             const cosI = Math.cos(i);
 
@@ -44,8 +47,5 @@ setInterval((() => {
 
         process.stdout.write('\033[H');
         process.stdout.write(screen.join(""));
-
-        a += 0.07;
-        b += 0.03;
     }
 }), 50);
