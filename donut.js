@@ -4,6 +4,8 @@ let b = 0;
 process.stdout.write('\033[2J');
 
 setInterval((() => {
+    // Hide cursor
+    process.stdout.write('\x1B[?25l');
     a += 0.07;
     b += 0.03;
 
@@ -49,3 +51,9 @@ setInterval((() => {
         process.stdout.write(screen.join(""));
     }
 }), 50);
+
+process.on('SIGINT', () => {
+    // Show cursor
+    process.stdout.write('\x1B[?25h');
+    process.exit(0);
+});
