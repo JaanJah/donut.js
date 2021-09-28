@@ -2,10 +2,10 @@ let a = 0;
 let b = 0;
 // Clear terminal
 process.stdout.write('\033[2J');
+// Hide cursor
+process.stdout.write('\x1B[?25l');
 
 setInterval((() => {
-    // Hide cursor
-    process.stdout.write('\x1B[?25l');
     a += 0.07;
     b += 0.03;
 
