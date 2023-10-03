@@ -1,3 +1,3 @@
 # donut.js
 
-`node start.js`
+`node donut.js`
